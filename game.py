@@ -24,7 +24,8 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
-SPEED = 120
+SPEED = 500
+DELAY_ALLOWANCE = 100
 
 class SnakeGameAI:
 
@@ -76,7 +77,7 @@ class SnakeGameAI:
         # 3. check if game over
         reward = 0
         game_over = False
-        if self.is_collision() or self.frame_iteration > 50*len(self.snake):
+        if self.is_collision() or self.frame_iteration > DELAY_ALLOWANCE*len(self.snake):
             game_over = True
             reward = -10
             return reward, game_over, self.score
